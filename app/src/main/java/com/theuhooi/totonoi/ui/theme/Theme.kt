@@ -16,15 +16,26 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = LightBlue200,
+    secondary = Amber600,
+    tertiary = Pink200,
+    background = Gray100,
+    surface = White,
+    onPrimary = Gray900,
+    onBackground = Black,
+    error = DeepOrange400,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = LightBlue200,
+    secondary = Amber600,
+    tertiary = Pink200,
+    background = Gray100,
+    surface = White,
+    onPrimary = Gray900,
+    onBackground = Black,
+    error = DeepOrange400,
+
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -38,7 +49,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun TotonoiAndroidTheme(
+fun TotonoiTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
@@ -51,13 +62,6 @@ fun TotonoiAndroidTheme(
         }
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
-    }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
-        }
     }
 
     MaterialTheme(
