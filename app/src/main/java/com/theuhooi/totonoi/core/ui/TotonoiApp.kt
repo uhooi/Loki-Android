@@ -11,6 +11,6 @@ fun TotonoiApp() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = TopDestination.SakatsuList.route) {
-        topNavGraph()
+        topNavGraph(navController = navController)
     }
 }

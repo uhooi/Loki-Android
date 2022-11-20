@@ -14,11 +14,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.theuhooi.totonoi.R
+import com.theuhooi.totonoi.core.ui.navigator.TopDestination
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class)
 @Composable
-fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel()) {
+fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel(), onFabClick: () -> Unit) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
@@ -37,7 +39,7 @@ fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel()) {
                 content = {
                     Icon(imageVector = Icons.Filled.Add, contentDescription = null)
                 },
-                onClick = { /*TODO*/ }
+                onClick = onFabClick
             )
         }
     ) { contentPadding ->
