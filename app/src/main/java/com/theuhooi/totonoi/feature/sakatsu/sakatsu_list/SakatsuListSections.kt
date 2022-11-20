@@ -42,7 +42,15 @@ fun SakatsuListSections(
                 ),
             ) {
                 items(sakatsuListStatus.sakatsuList) {
-                    SakatsuListItem(modifier = Modifier.fillMaxWidth(), title = it)
+                    SakatsuListItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        title = it.title,
+                        description = it.description,
+                        dateText = it.dateText,
+                        saunaTimeText = it.saunaTimeText,
+                        coolBathTimeText = it.coolBathTimeText,
+                        relaxationTimeText = it.relaxationTimeText
+                    )
                 }
             }
 

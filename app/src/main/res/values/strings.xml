@@ -6,7 +6,14 @@
 
     <!-- common -->
     <string name="error">エラー</string>
+    <string name="timeunit_second">秒</string>
+    <string name="timeunit_minute">分</string>
+    <string name="timeunit_hour">時間</string>
+    <string name="arrow_right">→</string>
 
     <!-- サ活一覧 -->
     <string name="sakatsu_list_empty_label">サ活を追加しよう！</string>
+    <string name="emoji_sauna">🧖</string>
+    <string name="emoji_cool_bath">💧</string>
+    <string name="emoji_relaxation">🍃</string>
 </resources>

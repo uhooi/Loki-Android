@@ -21,11 +21,18 @@ class SakatsuListViewModel @Inject constructor() : ViewModel() {
     init {
         viewModelScope.launch {
             delay(1000) // FIXME: 擬似的なIO処理
-            _uiState.update {
-                it.copy(
+            _uiState.update { currentState ->
+                currentState.copy(
                     data = SakatsuListStatus.Loaded(
                         sakatsuList = (1..100).map {
-                            it.toString()
+                            SakatsuListItemUiState(
+                                title = "title$it",
+                                description = if (it % 2 == 0) "description$it" else null,
+                                dateText = "2022/11/$it",
+                                saunaTimeText = if (it % 3 == 0) "$it" else null,
+                                coolBathTimeText = if (it % 4 == 0) "$it" else null,
+                                relaxationTimeText = if (it % 5 == 0) "$it" else null
+                            )
                         }
                     )
                 )

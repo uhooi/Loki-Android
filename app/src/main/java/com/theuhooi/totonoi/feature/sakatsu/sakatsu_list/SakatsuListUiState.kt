@@ -10,10 +10,19 @@ data class SakatsuListUiState(
 
 sealed interface SakatsuListStatus {
     object Empty : SakatsuListStatus
-    data class Loaded(val sakatsuList: List<String>) : SakatsuListStatus
+    data class Loaded(val sakatsuList: List<SakatsuListItemUiState>) : SakatsuListStatus
     object Loading : SakatsuListStatus
     object Error : SakatsuListStatus // FIXME: エラーの種類をハンドリングする必要あり？
 }
+
+data class SakatsuListItemUiState(
+    val title: String,
+    val description: String? = null,
+    val dateText: String,
+    val saunaTimeText: String? = null,
+    val coolBathTimeText: String? = null,
+    val relaxationTimeText: String? = null
+)
 
 sealed interface SakatsuListError {
 
