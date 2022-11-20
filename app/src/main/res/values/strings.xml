@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Totonoi-Android</string>
+
+    <!-- Title -->
     <string name="sakatsu_list_title">サ活一覧</string>
+
+    <!-- common -->
+    <string name="error">エラー</string>
+
+    <!-- サ活一覧 -->
+    <string name="sakatsu_list_empty_label">サ活を追加しよう！</string>
 </resources>
