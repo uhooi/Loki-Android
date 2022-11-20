@@ -1,4 +1,4 @@
-package com.theuhooi.totonoi.ui.theme
+package com.theuhooi.totonoi.core.ui.theme
 
 import android.app.Activity
 import android.os.Build
