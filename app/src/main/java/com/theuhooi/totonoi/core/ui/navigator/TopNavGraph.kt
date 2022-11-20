@@ -16,7 +16,11 @@ fun NavGraphBuilder.topNavGraph(navController: NavController) {
         )
     }
     composable(TopDestination.SakatuInput.route) {
-        SakatsuInputScreen()
+        SakatsuInputScreen(
+            onNavigationClick = {
+                navController.popBackStack()
+            }
+        )
     }
 }
 

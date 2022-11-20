@@ -3,6 +3,7 @@
 
     <!-- Title -->
     <string name="sakatsu_list_title">サ活一覧</string>
+    <string name="sakatsu_input_title">サ活登録</string>
 
     <!-- common -->
     <string name="error">エラー</string>
@@ -16,4 +17,7 @@
     <string name="emoji_sauna">🧖</string>
     <string name="emoji_cool_bath">💧</string>
     <string name="emoji_relaxation">🍃</string>
+
+    <!-- talkback -->
+    <string name="talkback_back">戻る</string>
 </resources>
