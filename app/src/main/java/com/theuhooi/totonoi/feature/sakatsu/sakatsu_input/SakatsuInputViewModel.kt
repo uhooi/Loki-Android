@@ -35,7 +35,7 @@ class SakatsuInputViewModel @Inject constructor() : ViewModel() {
     fun onSaunaTimeChange(saunaIndex: Int, saunaTime: String) {
         _uiState.update { currentState ->
             currentState.copy(
-                saunaSetList = currentState.saunaSetList.mapIndexed { index, item ->
+                saunaSetUiStateList = currentState.saunaSetUiStateList.mapIndexed { index, item ->
                     if (index == saunaIndex) {
                         item.copy(saunaTime = saunaTime)
                     } else {
@@ -49,7 +49,7 @@ class SakatsuInputViewModel @Inject constructor() : ViewModel() {
     fun onCoolBathTimeChange(saunaIndex: Int, coolBathTime: String) {
         _uiState.update { currentState ->
             currentState.copy(
-                saunaSetList = currentState.saunaSetList.mapIndexed { index, item ->
+                saunaSetUiStateList = currentState.saunaSetUiStateList.mapIndexed { index, item ->
                     if (index == saunaIndex) {
                         item.copy(coolBathTime = coolBathTime)
                     } else {
@@ -63,7 +63,7 @@ class SakatsuInputViewModel @Inject constructor() : ViewModel() {
     fun onRelaxationTimeChange(saunaIndex: Int, relaxationTime: String) {
         _uiState.update { currentState ->
             currentState.copy(
-                saunaSetList = currentState.saunaSetList.mapIndexed { index, item ->
+                saunaSetUiStateList = currentState.saunaSetUiStateList.mapIndexed { index, item ->
                     if (index == saunaIndex) {
                         item.copy(relaxationTime = relaxationTime)
                     } else {
@@ -83,7 +83,7 @@ class SakatsuInputViewModel @Inject constructor() : ViewModel() {
     fun onAddSaunaSetClick() {
         _uiState.update { currentState ->
             currentState.copy(
-                saunaSetList = currentState.saunaSetList.plus(SaunaSet())
+                saunaSetUiStateList = currentState.saunaSetUiStateList.plus(SaunaSetUiState())
             )
         }
     }

@@ -60,7 +60,7 @@ fun SakatsuInputScreen(
                 modifier = Modifier.fillMaxSize(),
                 facilityName = uiState.facilityName,
                 visitingDateText = uiState.visitingDateText,
-                saunaSetList = uiState.saunaSetList,
+                saunaSetList = uiState.saunaSetUiStateList,
                 description = uiState.description,
                 onFacilityNameChange = viewModel::onFacilityNameChange,
                 onVisitingDateChange = viewModel::onVisitingDateChange,

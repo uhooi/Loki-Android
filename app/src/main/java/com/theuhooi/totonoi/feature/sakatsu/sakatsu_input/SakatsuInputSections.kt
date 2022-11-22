@@ -25,7 +25,7 @@ import com.theuhooi.totonoi.R
 fun SakatsuInputSections(
     facilityName: String?,
     visitingDateText: String,
-    saunaSetList: List<SaunaSet>,
+    saunaSetList: List<SaunaSetUiState>,
     description: String?,
     onFacilityNameChange: (String) -> Unit,
     onVisitingDateChange: (Long) -> Unit,
