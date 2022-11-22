@@ -1,13 +1,11 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_list
 
-import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
@@ -18,7 +16,7 @@ import com.theuhooi.totonoi.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class)
 @Composable
-fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel()) {
+fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel(), onFabClick: () -> Unit) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
@@ -35,9 +33,9 @@ fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel()) {
         floatingActionButton = {
             FloatingActionButton(
                 content = {
-                    Icon(imageVector = Icons.Filled.Add, contentDescription = null)
+                    Icon(imageVector = Icons.Filled.Add, contentDescription = stringResource(id = R.string.talkback_add_sakatsu))
                 },
-                onClick = { /*TODO*/ }
+                onClick = onFabClick
             )
         }
     ) { contentPadding ->

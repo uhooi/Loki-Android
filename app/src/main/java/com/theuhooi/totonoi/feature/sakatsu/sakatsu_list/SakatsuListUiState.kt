@@ -16,7 +16,7 @@ sealed interface SakatsuListStatus {
 }
 
 data class SakatsuListItemUiState(
-    val title: String,
+    val title: String, // TODO: facilityNameに統一
     val description: String? = null,
     val dateText: String,
     val saunaTimeText: String? = null,
