@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter
 data class SakatsuInputUiState(
     val facilityName: String? = null,
     private val visitingDate: LocalDateTime = LocalDateTime.now(),
-    val saunaSetList: List<SaunaSet> = listOf(SaunaSet()),
+    val saunaSetUiStateList: List<SaunaSetUiState> = listOf(SaunaSetUiState()),
     val description: String? = null
 ) {
     val visitingDateText: String
@@ -18,7 +18,7 @@ data class SakatsuInputUiState(
         get() = facilityName.orEmpty().isNotBlank()
 }
 
-data class SaunaSet(
+data class SaunaSetUiState(
     val saunaTime: String? = null,
     val coolBathTime: String? = null,
     val relaxationTime: String? = null
