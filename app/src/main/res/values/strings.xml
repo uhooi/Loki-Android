@@ -11,6 +11,8 @@
     <string name="timeunit_minute">分</string>
     <string name="timeunit_hour">時間</string>
     <string name="arrow_right">→</string>
+    <string name="option">オプション</string>
+    <string name="save">保存</string>
 
     <!-- サ活一覧 -->
     <string name="sakatsu_list_empty_label">サ活を追加しよう！</string>
@@ -18,6 +20,17 @@
     <string name="emoji_cool_bath">💧</string>
     <string name="emoji_relaxation">🍃</string>
 
+    <!-- サ活登録 -->
+    <string name="sakatsu_input_facility_name">施設名</string>
+    <string name="sakatsu_input_visiting_date">訪問日</string>
+    <string name="sakatsu_input_sauna_set_label">%dセット目</string>
+    <string name="sakatsu_input_sauna_label">サウナ🧖</string>
+    <string name="sakatsu_input_cool_bath_label">水風呂💧</string>
+    <string name="sakatsu_input_relaxation_label">休憩🍃</string>
+    <string name="sakatsu_input_add_sauna_set">新しいセットを追加</string>
+    <string name="sakatsu_input_comment">コメント</string>
+
     <!-- talkback -->
     <string name="talkback_back">戻る</string>
+    <string name="talkback_add_sakatsu">サ活を登録する</string>
 </resources>

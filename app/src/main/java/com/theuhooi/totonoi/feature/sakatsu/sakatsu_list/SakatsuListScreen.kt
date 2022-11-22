@@ -33,7 +33,7 @@ fun SakatsuListScreen(viewModel: SakatsuListViewModel = viewModel(), onFabClick:
         floatingActionButton = {
             FloatingActionButton(
                 content = {
-                    Icon(imageVector = Icons.Filled.Add, contentDescription = null)
+                    Icon(imageVector = Icons.Filled.Add, contentDescription = stringResource(id = R.string.talkback_add_sakatsu))
                 },
                 onClick = onFabClick
             )
