@@ -1,5 +1,6 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_input
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,20 +10,54 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.theuhooi.totonoi.R
+import com.theuhooi.totonoi.core.ui.components.LogCompositions
+import timber.log.Timber
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SakatsuInputScreen(
+    uiState: SakatsuInputUiState,
     onNavigationClick: () -> Unit,
-    viewModel: SakatsuInputViewModel = viewModel()
+    onCompleteSave: () -> Unit,
+    onShownError: () -> Unit,
+    onSaveButtonClick: () -> Unit,
+    onFacilityNameChange: (String) -> Unit,
+    onVisitingDateChange: (Long) -> Unit,
+    onSaunaTimeChange: (index: Int, saunaTime: String) -> Unit,
+    onCoolBathTimeChange: (index: Int, coolBathTime: String) -> Unit,
+    onRelaxationTimeChange: (index: Int, relaxationTime: String) -> Unit,
+    onDescriptionChange: (String) -> Unit,
+    onAddSaunaSetClick: () -> Unit
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    LogCompositions(tag = "SakatsuInputScreen")
+    if (uiState.isCompleteSave) {
+        Toast.makeText(
+            LocalContext.current,
+            stringResource(id = R.string.complete_save),
+            Toast.LENGTH_SHORT
+        ).show()
+        onCompleteSave()
+    }
+    if (uiState.isError) {
+        Toast.makeText(
+            LocalContext.current,
+            stringResource(id = R.string.unexpected_error),
+            Toast.LENGTH_SHORT
+        ).show()
+        onShownError()
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -42,7 +77,7 @@ fun SakatsuInputScreen(
                         modifier = Modifier
                             .clickable(
                                 enabled = uiState.isSaveButtonEnabled,
-                                onClick = viewModel::onSaveButtonClick
+                                onClick = onSaveButtonClick
                             ),
                         text = stringResource(id = R.string.save),
                         color = if (uiState.isSaveButtonEnabled) {
@@ -62,14 +97,21 @@ fun SakatsuInputScreen(
                 visitingDateText = uiState.visitingDateText,
                 saunaSetList = uiState.saunaSetUiStateList,
                 description = uiState.description,
-                onFacilityNameChange = viewModel::onFacilityNameChange,
-                onVisitingDateChange = viewModel::onVisitingDateChange,
-                onSaunaTimeChange = viewModel::onSaunaTimeChange,
-                onCoolBathTimeChange = viewModel::onCoolBathTimeChange,
-                onRelaxationTimeChange = viewModel::onRelaxationTimeChange,
-                onDescriptionChange = viewModel::onDescriptionChange,
-                onAddSaunaSetClick = viewModel::onAddSaunaSetClick
+                onFacilityNameChange = onFacilityNameChange,
+                onVisitingDateChange = onVisitingDateChange,
+                onSaunaTimeChange = onSaunaTimeChange,
+                onCoolBathTimeChange = onCoolBathTimeChange,
+                onRelaxationTimeChange = onRelaxationTimeChange,
+                onDescriptionChange = onDescriptionChange,
+                onAddSaunaSetClick = onAddSaunaSetClick
             )
+        }
+    }
+    if (uiState.isLoading) {
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.Black.copy(alpha = 0.2f)) {
+            Box(contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
         }
     }
 }

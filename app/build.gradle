@@ -77,13 +77,17 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     // Material Design
     implementation 'com.google.android.material:material:1.7.0'
 
     // Room
-    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:2.4.3"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // Logger
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 }
 
 kapt {

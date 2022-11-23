@@ -7,15 +7,17 @@ import java.time.format.DateTimeFormatter
 @Stable
 data class SakatsuInputUiState(
     val facilityName: String? = null,
-    private val visitingDate: LocalDateTime = LocalDateTime.now(),
+    internal val visitingDate: LocalDateTime = LocalDateTime.now(),
     val saunaSetUiStateList: List<SaunaSetUiState> = listOf(SaunaSetUiState()),
-    val description: String? = null
+    val description: String? = null,
+    val isLoading: Boolean = false,
+    val isCompleteSave: Boolean = false,
+    val isError: Boolean = false
 ) {
-    val visitingDateText: String
-        get() = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(visitingDate)
+    val visitingDateText: String =
+        DateTimeFormatter.ofPattern("yyyy/MM/dd").format(visitingDate)
 
-    val isSaveButtonEnabled: Boolean
-        get() = facilityName.orEmpty().isNotBlank()
+    val isSaveButtonEnabled: Boolean = facilityName.orEmpty().isNotBlank()
 }
 
 data class SaunaSetUiState(

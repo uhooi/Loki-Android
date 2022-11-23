@@ -13,6 +13,8 @@
     <string name="arrow_right">→</string>
     <string name="option">オプション</string>
     <string name="save">保存</string>
+    <string name="complete_save">保存しました</string>
+    <string name="unexpected_error">不明なエラーが発生しました</string>
 
     <!-- サ活一覧 -->
     <string name="sakatsu_list_empty_label">サ活を追加しよう！</string>

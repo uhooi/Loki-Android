@@ -1,6 +1,8 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_list
 
 import androidx.compose.runtime.Stable
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @Stable
 data class SakatsuListUiState(
@@ -18,11 +20,14 @@ sealed interface SakatsuListStatus {
 data class SakatsuListItemUiState(
     val title: String, // TODO: facilityNameに統一
     val description: String? = null,
-    val dateText: String,
+    private val visitingDate: LocalDateTime,
     val saunaTimeText: String? = null,
     val coolBathTimeText: String? = null,
     val relaxationTimeText: String? = null
-)
+) {
+    val visitingDateText: String
+        get() = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(visitingDate)
+}
 
 sealed interface SakatsuListError {
 

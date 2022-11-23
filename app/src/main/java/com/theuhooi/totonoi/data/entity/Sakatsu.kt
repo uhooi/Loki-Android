@@ -16,7 +16,7 @@ data class Sakatsu(
 
 @Entity
 data class SaunaSet(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val saunaSetId: Long,
     val sakatsuId: Long,
     val saunaTime: Long?, // ms
