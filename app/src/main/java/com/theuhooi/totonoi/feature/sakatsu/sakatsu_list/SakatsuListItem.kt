@@ -73,6 +73,7 @@ fun SakatsuListItem(
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Text(
+                    modifier = Modifier.align(Alignment.Bottom),
                     text = stringResource(id = R.string.timeunit_minute),
                     style = MaterialTheme.typography.labelMedium
                 )
