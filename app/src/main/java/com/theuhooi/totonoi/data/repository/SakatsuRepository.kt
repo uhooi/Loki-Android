@@ -54,7 +54,7 @@ class SakatsuRepository @Inject constructor(
             saunaSetDao.updateSaunaSet(
                 SaunaSet(
                     saunaSetId = 0,
-                    sakatsuId = sakatsuId,
+                    sakatsuId = sakatsuId.toLong(),
                     saunaTime = it.saunaTime,
                     coolBathTime = it.coolBathTime,
                     relaxationTime = it.relaxationTime
@@ -78,7 +78,7 @@ class SakatsuRepository @Inject constructor(
             saunaSetDao.deleteSaunaSet(
                 SaunaSet(
                     saunaSetId = 0,
-                    sakatsuId = sakatsuId,
+                    sakatsuId = 0, // FIXME
                     saunaTime = it.saunaTime,
                     coolBathTime = it.coolBathTime,
                     relaxationTime = it.relaxationTime

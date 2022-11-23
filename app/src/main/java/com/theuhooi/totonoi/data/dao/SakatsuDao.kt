@@ -21,8 +21,8 @@ interface SakatsuDao {
     suspend fun insertSakatsu(sakatsu: Sakatsu): Long
 
     @Update
-    suspend fun updateSakatsu(sakatsu: Sakatsu): Long
+    suspend fun updateSakatsu(sakatsu: Sakatsu): Int
 
     @Delete
-    suspend fun deleteSakatsu(sakatsu: Sakatsu): Long
+    suspend fun deleteSakatsu(sakatsu: Sakatsu)
 }

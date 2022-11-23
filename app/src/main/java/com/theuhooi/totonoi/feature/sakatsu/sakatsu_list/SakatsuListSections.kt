@@ -46,7 +46,7 @@ fun SakatsuListSections(
                         modifier = Modifier.fillMaxWidth(),
                         title = it.title,
                         description = it.description,
-                        dateText = it.dateText,
+                        dateText = it.visitingDateText,
                         saunaTimeText = it.saunaTimeText,
                         coolBathTimeText = it.coolBathTimeText,
                         relaxationTimeText = it.relaxationTimeText

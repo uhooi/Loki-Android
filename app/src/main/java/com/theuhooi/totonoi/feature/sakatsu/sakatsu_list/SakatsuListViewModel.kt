@@ -2,41 +2,57 @@ package com.theuhooi.totonoi.feature.sakatsu.sakatsu_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.theuhooi.totonoi.data.usecase.ObserveSakatsuUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SakatsuListViewModel @Inject constructor() : ViewModel() {
+class SakatsuListViewModel @Inject constructor(
+    observeSakatsuUseCase: ObserveSakatsuUseCase
+) : ViewModel() {
 
-    private val _uiState: MutableStateFlow<SakatsuListUiState> =
-        MutableStateFlow(SakatsuListUiState())
-    val uiState: StateFlow<SakatsuListUiState> = _uiState.asStateFlow()
-
-    init {
-        viewModelScope.launch {
-            delay(1000) // FIXME: 擬似的なIO処理
-            _uiState.update { currentState ->
-                currentState.copy(
-                    data = SakatsuListStatus.Loaded(
-                        sakatsuList = (1..100).map {
-                            SakatsuListItemUiState(
-                                title = "title$it",
-                                description = if (it % 2 == 0) "description$it" else null,
-                                dateText = "2022/11/$it",
-                                saunaTimeText = if (it % 3 == 0) "$it" else null,
-                                coolBathTimeText = if (it % 4 == 0) "$it" else null,
-                                relaxationTimeText = if (it % 5 == 0) "$it" else null
-                            )
-                        }
-                    )
+    val uiState: StateFlow<SakatsuListUiState> = observeSakatsuUseCase().map {
+        if (it.isEmpty()) {
+            SakatsuListUiState(
+                data = SakatsuListStatus.Empty
+            )
+        } else {
+            SakatsuListUiState(
+                data = SakatsuListStatus.Loaded(
+                    sakatsuList = it.map {
+                        SakatsuListItemUiState(
+                            title = it.facilityName,
+                            description = it.description,
+                            visitingDate = it.visitingDate,
+                            saunaTimeText = if (it.saunaSets.isNotEmpty()) {
+                                it.saunaSets.first().saunaTime?.let {
+                                    "${it / 60000}"
+                                }
+                            } else {
+                                null
+                            },
+                            coolBathTimeText = if (it.saunaSets.isNotEmpty()) {
+                                it.saunaSets.first().coolBathTime?.let {
+                                    "${it / 1000}"
+                                }
+                            } else {
+                                null
+                            },
+                            relaxationTimeText = if (it.saunaSets.isNotEmpty()) {
+                                it.saunaSets.first().relaxationTime?.let {
+                                    "${it / 60000}"
+                                }
+                            } else {
+                                null
+                            }
+                        )
+                    }
                 )
-            }
+            )
         }
-    }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), initialValue = SakatsuListUiState())
+
 }

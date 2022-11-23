@@ -1,18 +1,26 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_input
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.theuhooi.totonoi.data.entity.SaunaSetDto
+import com.theuhooi.totonoi.data.usecase.RegisterSakatsuUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import javax.inject.Inject
 
 @HiltViewModel
-class SakatsuInputViewModel @Inject constructor() : ViewModel() {
+class SakatsuInputViewModel @Inject constructor(
+    private val registerSakatsuUseCase: RegisterSakatsuUseCase
+) : ViewModel() {
 
     private val _uiState: MutableStateFlow<SakatsuInputUiState> =
         MutableStateFlow(SakatsuInputUiState())
@@ -89,6 +97,55 @@ class SakatsuInputViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onSaveButtonClick() {
-        TODO("implement logic")
+        // facilityNameが空の場合はsave buttonが押せないがfail safeとして
+        val facilityName = uiState.value.facilityName ?: return
+        _uiState.update {
+            it.copy(isLoading = true)
+        }
+        val saunaSets = uiState.value.saunaSetUiStateList.map {
+            SaunaSetDto(
+                saunaTime = it.saunaTime?.toLong()?.let {
+                    it * 60000
+                },
+                coolBathTime = it.coolBathTime?.toLong()?.let {
+                    it * 1000
+                },
+                relaxationTime = it.relaxationTime?.toLong()?.let {
+                    it * 60000
+                }
+            )
+        }
+        viewModelScope.launch {
+            runCatching {
+                registerSakatsuUseCase(
+                    facilityName = facilityName,
+                    visitingDate = uiState.value.visitingDate,
+                    saunaSets = saunaSets,
+                    description = uiState.value.description
+                )
+            }.onSuccess {
+                _uiState.update {
+                    it.copy(isLoading = false, isCompleteSave = true)
+                }
+            }.onFailure {
+                Timber.w(it)
+                _uiState.update {
+                    it.copy(isLoading = false, isError = true)
+                }
+            }
+        }
     }
+
+    fun onCompleteShown() {
+        _uiState.update {
+            it.copy(isCompleteSave = false)
+        }
+    }
+
+    fun onShownError() {
+        _uiState.update {
+            it.copy(isError = false)
+        }
+    }
+
 }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theuhooi.totonoi.R
+import com.theuhooi.totonoi.core.ui.components.LogCompositions
 
 @Composable
 fun SakatsuInputSections(
@@ -36,6 +38,7 @@ fun SakatsuInputSections(
     onAddSaunaSetClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    LogCompositions(tag = "SakatsuInputSections")
     val bottomInsets = with(LocalDensity.current) {
         WindowInsets.safeDrawing.getBottom(this).toDp()
     }
@@ -105,6 +108,7 @@ private fun FacilityNameSection(
     onFacilityNameChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    LogCompositions(tag = "FacilityNameSection")
     OutlinedTextField(
         modifier = modifier,
         value = facilityName.orEmpty(),
@@ -121,6 +125,7 @@ private fun VisitingDateSection(
     onVisitingDateChange: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    LogCompositions(tag = "VisitingDateSection")
     val activity = LocalContext.current as AppCompatActivity
     Box(
         modifier = modifier
@@ -170,6 +175,7 @@ private fun SaunaSetSection(
     onRelaxationTimeChange: (saunaSetIndex: Int, relaxationTime: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    LogCompositions(tag = "SaunaSetSection")
     Column(modifier = modifier) {
         Text(
             text = stringResource(id = R.string.sakatsu_input_sauna_set_label, index + 1),
@@ -253,6 +259,7 @@ private fun DescriptionSection(
     onDescriptionChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    LogCompositions(tag = "DescriptionSection")
     OutlinedTextField(
         modifier = modifier,
         value = description.orEmpty(),
