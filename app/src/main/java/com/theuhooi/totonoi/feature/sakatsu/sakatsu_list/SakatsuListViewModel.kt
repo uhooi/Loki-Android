@@ -53,6 +53,8 @@ class SakatsuListViewModel @Inject constructor(
                 )
             )
         }
+    }.catch {
+        emit(SakatsuListUiState(data = SakatsuListStatus.Empty))
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), initialValue = SakatsuListUiState())
 
 }
