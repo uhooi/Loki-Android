@@ -13,12 +13,14 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.theuhooi.totonoi.R
+import com.theuhooi.totonoi.core.ui.components.LogCompositions
 
 @Composable
 fun SakatsuListSections(
     sakatsuListStatus: SakatsuListStatus,
     modifier: Modifier = Modifier
 ) {
+    LogCompositions(tag = "SakatsuListSections")
     when (sakatsuListStatus) {
         SakatsuListStatus.Empty -> {
             Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
