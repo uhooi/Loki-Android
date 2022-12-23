@@ -72,7 +72,6 @@ fun SakatsuInputSections(
         }
         items(saunaSetList.size) {
             Column(modifier = Modifier.animateItemPlacement()) {
-                // Copose...
                 SaunaSetSection(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -118,6 +117,7 @@ fun SakatsuInputSections(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FacilityNameSection(
     facilityName: String?,
