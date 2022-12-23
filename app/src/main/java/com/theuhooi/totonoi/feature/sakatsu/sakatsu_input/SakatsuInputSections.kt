@@ -3,6 +3,7 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_input
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -23,6 +24,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SakatsuInputSections(
     facilityName: String?,
@@ -69,27 +71,30 @@ fun SakatsuInputSections(
             )
         }
         items(saunaSetList.size) {
-            SaunaSetSection(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                index = it,
-                saunaTime = saunaSetList[it].saunaTime,
-                coolBathTime = saunaSetList[it].coolBathTime,
-                relaxationTime = saunaSetList[it].relaxationTime,
-                onSaunaTimeChange = onSaunaTimeChange,
-                onCoolBathTimeChange = onCoolBathTimeChange,
-                onRelaxationTimeChange = onRelaxationTimeChange
-            )
-            if (it != 0) {
-                Text(
+            Column(modifier = Modifier.animateItemPlacement()) {
+                // Copose...
+                SaunaSetSection(
                     modifier = Modifier
-                        .padding(top = 4.dp)
-                        .clickable(onClick = { onDeleteSaunaSetClick(it) }),
-                    text = stringResource(id = R.string.sakatsu_input_delete_sauna_set),
-                    color = MaterialTheme.colorScheme.error,
-                    fontSize = 12.sp
+                        .fillMaxWidth()
+                        .padding(top = 16.dp),
+                    index = it,
+                    saunaTime = saunaSetList[it].saunaTime,
+                    coolBathTime = saunaSetList[it].coolBathTime,
+                    relaxationTime = saunaSetList[it].relaxationTime,
+                    onSaunaTimeChange = onSaunaTimeChange,
+                    onCoolBathTimeChange = onCoolBathTimeChange,
+                    onRelaxationTimeChange = onRelaxationTimeChange
                 )
+                if (it != 0) {
+                    Text(
+                        modifier = Modifier
+                            .padding(top = 4.dp)
+                            .clickable(onClick = { onDeleteSaunaSetClick(it) }),
+                        text = stringResource(id = R.string.sakatsu_input_delete_sauna_set),
+                        color = MaterialTheme.colorScheme.error,
+                        fontSize = 12.sp
+                    )
+                }
             }
         }
         item {
