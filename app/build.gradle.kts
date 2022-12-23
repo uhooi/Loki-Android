@@ -57,41 +57,38 @@ android {
 
 
 dependencies {
-    val composeVersion = "1.3.1"
-    val roomVersion = "2.4.3"
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
-    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
+    implementation(libs.androidxCoreKtx)
+    implementation(libs.androidxLifecycleLifecycleRuntimeKtx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidxTestExtJunit)
+    androidTestImplementation(libs.androidxTestEspressoEspressoCore)
+    androidTestImplementation(libs.composeUiTestJunit4)
+    debugImplementation(libs.composeUiTooling)
+    debugImplementation(libs.composeUiTestManifest)
 
     // Compose
-    implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
-    implementation("androidx.navigation:navigation-compose:2.5.3")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha02")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha03")
+    implementation(libs.androidxActivityCompose)
+    implementation(libs.composeUi)
+    implementation(libs.composeUiToolingPreview)
+    implementation(libs.composeFoundation)
+    implementation(libs.androidxNavigationCompose)
+    implementation(libs.composeMaterial3)
+    implementation(libs.composeLifecycleRuntime)
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-compiler:2.44")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.daggerHiltAndroid)
+    kapt(libs.daggerHiltAndroidCompiler)
+    implementation(libs.hiltNavigationCompose)
 
     // Material Design
-    implementation("com.google.android.material:material:1.7.0")
+    implementation(libs.material3)
 
     // Room
-    implementation("androidx.room:room-ktx:2.4.3")
-    kapt ("androidx.room:room-compiler:$roomVersion")
+    implementation(libs.roomKtx)
+    kapt(libs.roomCompiler)
 
     // Logger
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timberLogger)
 }
 
 kapt {
