@@ -8,15 +8,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -195,7 +196,8 @@ private fun SaunaSetSection(
                         text = stringResource(id = R.string.option),
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                }
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Spacer(modifier = Modifier.width(2.dp))
             Text(
@@ -218,7 +220,8 @@ private fun SaunaSetSection(
                         text = stringResource(id = R.string.option),
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                }
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Spacer(modifier = Modifier.width(2.dp))
             Text(
@@ -241,7 +244,8 @@ private fun SaunaSetSection(
                         text = stringResource(id = R.string.option),
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                }
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Spacer(modifier = Modifier.width(2.dp))
             Text(
