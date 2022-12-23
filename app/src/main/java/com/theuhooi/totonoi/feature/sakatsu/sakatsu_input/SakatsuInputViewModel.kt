@@ -5,17 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.theuhooi.totonoi.data.entity.SaunaSetDto
 import com.theuhooi.totonoi.data.usecase.RegisterSakatsuUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import javax.inject.Inject
 
 @HiltViewModel
 class SakatsuInputViewModel @Inject constructor(
@@ -92,6 +91,16 @@ class SakatsuInputViewModel @Inject constructor(
         _uiState.update { currentState ->
             currentState.copy(
                 saunaSetUiStateList = currentState.saunaSetUiStateList.plus(SaunaSetUiState())
+            )
+        }
+    }
+
+    fun onDeleteSaunaSetClick(setIndex: Int) {
+        _uiState.update { currentState ->
+            val resultSaunaSetUiStateList = currentState.saunaSetUiStateList.toMutableList()
+            resultSaunaSetUiStateList.removeAt(setIndex)
+            currentState.copy(
+                saunaSetUiStateList = resultSaunaSetUiStateList
             )
         }
     }

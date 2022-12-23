@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,6 +18,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
@@ -36,6 +36,7 @@ fun SakatsuInputSections(
     onRelaxationTimeChange: (saunaSetIndex: Int, relaxationTime: String) -> Unit,
     onDescriptionChange: (String) -> Unit,
     onAddSaunaSetClick: () -> Unit,
+    onDeleteSaunaSetClick: (setIndex: Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LogCompositions(tag = "SakatsuInputSections")
@@ -80,6 +81,16 @@ fun SakatsuInputSections(
                 onCoolBathTimeChange = onCoolBathTimeChange,
                 onRelaxationTimeChange = onRelaxationTimeChange
             )
+            if (it != 0) {
+                Text(
+                    modifier = Modifier
+                        .padding(top = 4.dp)
+                        .clickable(onClick = { onDeleteSaunaSetClick(it) }),
+                    text = stringResource(id = R.string.sakatsu_input_delete_sauna_set),
+                    color = MaterialTheme.colorScheme.error,
+                    fontSize = 12.sp
+                )
+            }
         }
         item {
             Text(
