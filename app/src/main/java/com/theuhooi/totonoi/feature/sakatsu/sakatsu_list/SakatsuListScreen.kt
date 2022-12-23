@@ -14,11 +14,12 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
+import com.theuhooi.totonoi.core.ui.components.LogType
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class)
 @Composable
 fun SakatsuListScreen(viewModel: SakatsuListViewModel = hiltViewModel(), onFabClick: () -> Unit) {
-    LogCompositions(tag = "SakatsuListScreen")
+    LogCompositions(tag = LogType.SAKATSU_LIST_SCREEN)
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(

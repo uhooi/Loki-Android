@@ -1,6 +1,11 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_list
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -14,13 +19,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
+import com.theuhooi.totonoi.core.ui.components.LogType
 
 @Composable
 fun SakatsuListSections(
     sakatsuListStatus: SakatsuListStatus,
     modifier: Modifier = Modifier
 ) {
-    LogCompositions(tag = "SakatsuListSections")
+    LogCompositions(tag = LogType.SAKATSU_LIST_SECTIONS)
     when (sakatsuListStatus) {
         SakatsuListStatus.Empty -> {
             Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

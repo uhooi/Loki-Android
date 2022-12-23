@@ -8,8 +8,20 @@ import timber.log.Timber
 class Ref(var value: Int)
 
 @Composable
-inline fun LogCompositions(tag: String) {
+inline fun LogCompositions(tag: LogType) {
     val ref = remember { Ref(0) }
     SideEffect { ref.value++ }
-    Timber.d("$tag: Compositions: ${ref.value}")
+    Timber.d("${tag.name}: Compositions: ${ref.value}")
+}
+
+enum class LogType {
+    SAKATSU_INPUT_SCREEN,
+    SAKATSU_INPUT_SECTIONS,
+    FacilityNameSection,
+    VISITING_DATE_SECTION,
+    SAUNA_SET_SECTION,
+    DESCRIPTION_SECTION,
+    SAKATSU_LIST_ITEM,
+    SAKATSU_LIST_SCREEN,
+    SAKATSU_LIST_SECTIONS
 }
