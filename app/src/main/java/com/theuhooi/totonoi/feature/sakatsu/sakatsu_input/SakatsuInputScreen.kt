@@ -1,7 +1,6 @@
 package com.theuhooi.totonoi.feature.sakatsu.sakatsu_input
 
 import android.widget.Toast
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -66,19 +65,16 @@ fun SakatsuInputScreen(
                     }
                 },
                 actions = {
-                    Text(
-                        modifier = Modifier
-                            .clickable(
-                                enabled = uiState.isSaveButtonEnabled,
-                                onClick = onSaveButtonClick
-                            ),
-                        text = stringResource(id = R.string.save),
-                        color = if (uiState.isSaveButtonEnabled) {
-                            MaterialTheme.colorScheme.primary
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                        }
-                    )
+                    IconButton(onClick = onSaveButtonClick, enabled = uiState.isSaveButtonEnabled) {
+                        Text(
+                            text = stringResource(id = R.string.save),
+                            color = if (uiState.isSaveButtonEnabled) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            }
+                        )
+                    }
                 }
             )
         }
