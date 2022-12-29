@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Totonoi-Android"
-include ':app'
+include(":app")
