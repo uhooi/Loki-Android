@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
+import com.theuhooi.totonoi.core.ui.components.LogType
 
 @Composable
 fun SakatsuInputSections(
@@ -39,7 +40,7 @@ fun SakatsuInputSections(
     onAddSaunaSetClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LogCompositions(tag = "SakatsuInputSections")
+    LogCompositions(tag = LogType.SAKATSU_INPUT_SECTIONS)
     val bottomInsets = with(LocalDensity.current) {
         WindowInsets.safeDrawing.getBottom(this).toDp()
     }
@@ -109,7 +110,7 @@ private fun FacilityNameSection(
     onFacilityNameChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LogCompositions(tag = "FacilityNameSection")
+    LogCompositions(tag = LogType.FacilityNameSection)
     OutlinedTextField(
         modifier = modifier,
         value = facilityName.orEmpty(),
@@ -126,7 +127,7 @@ private fun VisitingDateSection(
     onVisitingDateChange: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LogCompositions(tag = "VisitingDateSection")
+    LogCompositions(tag = LogType.VISITING_DATE_SECTION)
     val activity = LocalContext.current as AppCompatActivity
     Box(
         modifier = modifier
@@ -176,7 +177,7 @@ private fun SaunaSetSection(
     onRelaxationTimeChange: (saunaSetIndex: Int, relaxationTime: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LogCompositions(tag = "SaunaSetSection")
+    LogCompositions(tag = LogType.SAUNA_SET_SECTION)
     Column(modifier = modifier) {
         Text(
             text = stringResource(id = R.string.sakatsu_input_sauna_set_label, index + 1),
@@ -263,7 +264,7 @@ private fun DescriptionSection(
     onDescriptionChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LogCompositions(tag = "DescriptionSection")
+    LogCompositions(tag = LogType.DESCRIPTION_SECTION)
     OutlinedTextField(
         modifier = modifier,
         value = description.orEmpty(),

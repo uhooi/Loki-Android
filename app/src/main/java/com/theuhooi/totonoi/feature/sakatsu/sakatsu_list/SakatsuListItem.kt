@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
+import com.theuhooi.totonoi.core.ui.components.LogType
 
 @Composable
 fun SakatsuListItem(
@@ -22,7 +23,7 @@ fun SakatsuListItem(
     coolBathTimeText: String? = null,
     relaxationTimeText: String? = null
 ) {
-    LogCompositions(tag = "SakatsuListItem")
+    LogCompositions(tag = LogType.SAKATSU_LIST_ITEM)
     Card(modifier = modifier.padding(vertical = 8.dp)) {
         Text(
             modifier = Modifier

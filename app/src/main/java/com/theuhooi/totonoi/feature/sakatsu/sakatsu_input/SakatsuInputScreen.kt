@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.theuhooi.totonoi.R
 import com.theuhooi.totonoi.core.ui.components.LogCompositions
+import com.theuhooi.totonoi.core.ui.components.LogType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,7 +33,7 @@ fun SakatsuInputScreen(
     onDescriptionChange: (String) -> Unit,
     onAddSaunaSetClick: () -> Unit
 ) {
-    LogCompositions(tag = "SakatsuInputScreen")
+    LogCompositions(tag = LogType.SAKATSU_INPUT_SCREEN)
     if (uiState.isCompleteSave) {
         Toast.makeText(
             LocalContext.current,
