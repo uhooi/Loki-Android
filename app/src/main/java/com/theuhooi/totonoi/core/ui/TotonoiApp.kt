@@ -1,7 +1,5 @@
 package com.theuhooi.totonoi.core.ui
 
-import android.os.Handler
-import android.os.Looper
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -51,7 +49,8 @@ fun TotonoiApp() {
                 onCoolBathTimeChange = viewModel::onCoolBathTimeChange,
                 onRelaxationTimeChange = viewModel::onRelaxationTimeChange,
                 onDescriptionChange = viewModel::onDescriptionChange,
-                onAddSaunaSetClick = viewModel::onAddSaunaSetClick
+                onAddSaunaSetClick = viewModel::onAddSaunaSetClick,
+                onDeleteSaunaSetClick = viewModel::onDeleteSaunaSetClick
             )
         }
     }

@@ -31,7 +31,8 @@ fun SakatsuInputScreen(
     onCoolBathTimeChange: (index: Int, coolBathTime: String) -> Unit,
     onRelaxationTimeChange: (index: Int, relaxationTime: String) -> Unit,
     onDescriptionChange: (String) -> Unit,
-    onAddSaunaSetClick: () -> Unit
+    onAddSaunaSetClick: () -> Unit,
+    onDeleteSaunaSetClick: (setIndex: Int) -> Unit,
 ) {
     LogCompositions(tag = LogType.SAKATSU_INPUT_SCREEN)
     if (uiState.isCompleteSave) {
@@ -93,7 +94,8 @@ fun SakatsuInputScreen(
                 onCoolBathTimeChange = onCoolBathTimeChange,
                 onRelaxationTimeChange = onRelaxationTimeChange,
                 onDescriptionChange = onDescriptionChange,
-                onAddSaunaSetClick = onAddSaunaSetClick
+                onAddSaunaSetClick = onAddSaunaSetClick,
+                onDeleteSaunaSetClick = onDeleteSaunaSetClick
             )
         }
     }

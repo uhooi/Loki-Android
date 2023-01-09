@@ -30,6 +30,7 @@
     <string name="sakatsu_input_cool_bath_label">水風呂💧</string>
     <string name="sakatsu_input_relaxation_label">休憩🍃</string>
     <string name="sakatsu_input_add_sauna_set">新しいセットを追加</string>
+    <string name="sakatsu_input_delete_sauna_set">セットを削除</string>
     <string name="sakatsu_input_comment">コメント</string>
 
     <!-- talkback -->
